@@ -52,12 +52,23 @@ function startNewRound() {
 }
 
 function handleBackspace() {
-  if (activeIndex === 0 || waitingForNextRound) {
+  if (waitingForNextRound) {
+    return;
+  }
+
+  // If the current slot contains a typed (incorrect) digit, clear it first.
+  if (typedDigits[activeIndex] !== undefined) {
+    typedDigits[activeIndex] = undefined;
+    renderTarget();
+    return;
+  }
+
+  if (activeIndex === 0) {
     return;
   }
 
   activeIndex -= 1;
-  typedDigits.splice(activeIndex, 1);
+  typedDigits[activeIndex] = undefined;
   renderTarget();
 }
 
