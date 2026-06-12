@@ -67,7 +67,9 @@ function handleDigitInput(digit) {
   }
 
   typedDigits[activeIndex] = digit;
-  activeIndex += 1;
+  if (digit === targetDigits[activeIndex]) {
+    activeIndex += 1;
+  }
 
   if (activeIndex >= DIGIT_COUNT) {
     waitingForNextRound = true;
