@@ -1,0 +1,76 @@
+:root {
+  --bg-top: #f8f9fb;
+  --bg-bottom: #e9edf3;
+  --neutral: #d8dee6;
+  --neutral-text: #353d48;
+  --correct: #2f9e44;
+  --incorrect: #d64545;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background: linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.app {
+  width: min(520px, 100%);
+}
+
+.digit-row {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+.digit-slot {
+  border-bottom: 5px solid #ffffff00;
+  background: rgba(255, 255, 255, 0.75);
+  min-height: 94px;
+  min-width: 0.85em;
+  display: grid;
+  place-items: center;
+  font-size: 6rem;
+  font-weight: 400;
+  color: var(--neutral-text);
+  transition:
+    background-color 120ms ease,
+    border-bottom-color 120ms ease,
+    color 120ms ease;
+}
+
+.digit-slot.pending {
+  background: transparent;
+  color: var(--neutral-text);
+}
+
+.digit-slot.correct {
+  border-bottom-color: #1e7a32;
+  background: #ecf9ef;
+  color: #1e7a32;
+}
+
+.digit-slot.incorrect {
+  border-bottom-color: #b02f2f;
+  background: #fdeeee;
+  color: #b02f2f;
+}
+
+@media (max-width: 520px) {
+  .digit-slot {
+    min-height: 76px;
+    font-size: 3rem;
+  }
+}
